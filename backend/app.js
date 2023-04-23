@@ -6,9 +6,9 @@ app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
-const countryRouter = require('./routes/API/countries/country')
-app.use('/country', countryRouter)
+const countryRouter = require("./routes/API/countries/country");
+app.use("/country", countryRouter);
 
-app.listen(port)
-console.log(`Server running at http:/localhost}:${port}/`)
-console.log('Script beginning date', Date.now())
+app.listen(port);
+console.log(`Server running at http:/localhost}:${port}/`);
+console.log("Script beginning date", Date.now());
