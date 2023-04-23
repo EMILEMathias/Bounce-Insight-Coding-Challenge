@@ -5,7 +5,7 @@
 ## Front
 
 # dependencies
-/fronted/node_modules
+fronted/node_modules
 fronted/.pnp
 fronted/.pnp.js
 
