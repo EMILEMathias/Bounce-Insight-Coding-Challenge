@@ -81,7 +81,12 @@ function App() {
           />
         </Box>
       </Flex>
-      <Flex gap={"10px"} marginX={"10vw"} justifyContent={"center"}>
+      <Flex
+        gap={"10px"}
+        marginX={"10vw"}
+        justifyContent={"center"}
+        wrap={"wrap"}
+      >
         {selectedCountriesData.map((aCountryData, index) => (
           <Country countryData={aCountryData}></Country>
         ))}
