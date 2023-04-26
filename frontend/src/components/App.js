@@ -39,7 +39,7 @@ function App() {
       bg={"rgb(30, 30, 34)"}
       color={"white"}
       maxW={"none"}
-      height={"100vh"}
+      minH={"100vh"}
     >
       <Flex
         h={"full"}
@@ -50,15 +50,17 @@ function App() {
         <Heading as={"h1"} mb={"100px"}>
           Country data
         </Heading>
-        <Box maxW={"600px"} w={"600px"}>
+        <Box maxW={"600px"} w={"600px"} mb={"100px"}>
           <CUIAutoComplete
             inputStyleProps={{
               bg: "rgb(30, 30, 34)",
             }}
             listItemStyleProps={{ bg: "rgb(30, 30, 34)" }}
             listStyleProps={{
-              bg: "rgb(30, 30, 34)",
-              maxH: "500px",
+              bg: "rgb(40, 40, 44)",
+              maxH: "200px",
+              overflowY: "scroll",
+              cursor: "pointer",
             }}
             toggleButtonStyleProps={{ bg: "rgb(30, 30, 34)", border: "1px" }}
             tagStyleProps={{
@@ -67,7 +69,7 @@ function App() {
               border: "1px",
               h: "30px",
             }}
-            highlightItemBg={"rgb(40, 40, 44)"}
+            highlightItemBg={"rgb(50, 50, 54)"}
             label="Looking for a country ? Search here !"
             placeholder="Type a Country"
             onCreateItem={handleCreateItem}
@@ -78,8 +80,10 @@ function App() {
             }
           />
         </Box>
+      </Flex>
+      <Flex gap={"10px"} marginX={"10vw"} justifyContent={"center"}>
         {selectedCountriesData.map((aCountryData, index) => (
-          <Country key={index} countryData={aCountryData}></Country>
+          <Country countryData={aCountryData}></Country>
         ))}
       </Flex>
     </Container>
