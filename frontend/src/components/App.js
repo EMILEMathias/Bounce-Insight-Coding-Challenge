@@ -1,16 +1,28 @@
-import { Box, Container, Flex, Heading, Input } from "@chakra-ui/react";
-import "./styles/globals.css";
+import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import "../styles/globals.css";
 import { CUIAutoComplete } from "chakra-ui-autocomplete";
 import React from "react";
 import axios from "axios";
-import countries from "./countries.json";
+import countries from "../countries.json";
+import Country from "./country";
 
 function App() {
   const [pickerItems, setPickerItems] = React.useState(countries);
   const [selectedItems, setSelectedItems] = React.useState([]);
-  axios.get("http://localhost:3001/country/france").then((response) => {
-    console.log(response.data);
-  });
+  const [selectedCountriesData, setSelectedCountriesData] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchCountriesData() {
+      const result = await Promise.all(
+        selectedItems.map((aSelectedItem) =>
+          axios(`http://localhost:3001/country/${aSelectedItem.label}`)
+        )
+      );
+      setSelectedCountriesData(result.map((aRes) => aRes.data[0]));
+    }
+
+    fetchCountriesData();
+  }, [selectedItems]);
 
   const handleCreateItem = (item) => {
     setPickerItems((curr) => [...curr, item]);
@@ -66,6 +78,9 @@ function App() {
             }
           />
         </Box>
+        {selectedCountriesData.map((aCountryData, index) => (
+          <Country key={index} countryData={aCountryData}></Country>
+        ))}
       </Flex>
     </Container>
   );
