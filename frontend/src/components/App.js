@@ -47,7 +47,7 @@ function App() {
         alignItems={"center"}
         flexDir={"column"}
       >
-        <Heading as={"h1"} mb={"100px"}>
+        <Heading as={"h1"} my={"100px"}>
           Country data
         </Heading>
         <Box maxW={"600px"} w={"600px"} mb={"100px"}>
