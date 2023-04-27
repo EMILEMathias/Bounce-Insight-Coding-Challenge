@@ -15,7 +15,7 @@ function App() {
     async function fetchCountriesData() {
       const result = await Promise.all(
         selectedItems.map((aSelectedItem) =>
-          axios(`${process.env.REACT_APP_BACKEND_URL}/${aSelectedItem.label}`)
+          axios(`${process.env.REACT_APP_BACKEND_URL}${aSelectedItem.label}`)
         )
       );
       setSelectedCountriesData(result.map((aRes) => aRes.data[0]));
