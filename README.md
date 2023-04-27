@@ -34,5 +34,6 @@ npm run start
 
 I use onrender to deploy these two node service (it's quite slow but free !).
 
-Here is the backend : https://bounceinsight-back.onrender.com/(https://bounceinsight-back.onrender.com)
-And here is the frontend : https://bounceinsight-front.onrender.com/(https://bounceinsight-front.onrender.com/)
+Here is the backend : https://bounceinsight-back.onrender.com/
+
+And here is the frontend : https://bounceinsight-front.onrender.com/
