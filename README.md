@@ -1,5 +1,7 @@
 # Bounce-Insight-Coding-Challenge
 
+This project was made in 5 hours.
+
 ## To setup the project :
 
 ### Setup back
@@ -27,3 +29,10 @@ cd ../frontend
 npm install
 npm run start
 ```
+
+## Live service
+
+I use onrender to deploy these two node service (it's quite slow but free !).
+
+Here is the backend : https://bounceinsight-back.onrender.com/(https://bounceinsight-back.onrender.com)
+And here is the frontend : https://bounceinsight-front.onrender.com/(https://bounceinsight-front.onrender.com/)

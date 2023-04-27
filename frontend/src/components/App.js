@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Spinner } from "@chakra-ui/react";
 import "../styles/globals.css";
 import { CUIAutoComplete } from "chakra-ui-autocomplete";
 import React from "react";
@@ -10,14 +10,17 @@ function App() {
   const [pickerItems, setPickerItems] = React.useState(countries);
   const [selectedItems, setSelectedItems] = React.useState([]);
   const [selectedCountriesData, setSelectedCountriesData] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     async function fetchCountriesData() {
+      setIsLoading(true);
       const result = await Promise.all(
         selectedItems.map((aSelectedItem) =>
           axios(`${process.env.REACT_APP_BACKEND_URL}${aSelectedItem.label}`)
         )
       );
+      setIsLoading(false);
       setSelectedCountriesData(result.map((aRes) => aRes.data[0]));
     }
 
@@ -50,7 +53,7 @@ function App() {
         <Heading as={"h1"} my={"100px"}>
           Country data
         </Heading>
-        <Box maxW={"600px"} w={"600px"} mb={"100px"}>
+        <Box maxW={"600px"} w={{ base: "auto", md: "600px" }} res mb={"100px"}>
           <CUIAutoComplete
             inputStyleProps={{
               bg: "rgb(30, 30, 34)",
@@ -80,6 +83,11 @@ function App() {
             }
           />
         </Box>
+      </Flex>
+      <Flex justifyContent={"center"} mb={"50px"}>
+        {isLoading && (
+          <Spinner thickness="4px" speed="0.65s" color="white" size="xl" />
+        )}
       </Flex>
       <Flex
         gap={"10px"}
